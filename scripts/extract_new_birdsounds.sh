@@ -143,9 +143,12 @@ for h in "${SCAN_DIRS[@]}";do
 
   # Rename files that have been processed so that they are not processed on the
   # next extraction.
-  [[ -d "${PROCESSED}" ]] || mkdir "${PROCESSED}"
-  #echo "Moving processed files to ${PROCESSED}"
-  mv ${h}/* ${PROCESSED} &> /dev/null || true
+  if [ "${KEEP_PROCESSED}" = "y" ]; then
+    [[ -d "${PROCESSED}" ]] || mkdir "${PROCESSED}"
+    mv ${h}/* ${PROCESSED} &> /dev/null || true
+  else
+    rm ${h}/* &> /dev/null || true
+  fi
 
   # Removes old directories
   if echo "${h}" | grep $(date --date="-2 day" "+%A") &> /dev/null;then

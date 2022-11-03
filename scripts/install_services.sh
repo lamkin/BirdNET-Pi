@@ -35,6 +35,11 @@ update_etc_hosts() {
   sed -ie s/'$(hostname).local'/"$(hostname).local ${BIRDNETPI_URL//https:\/\/} ${WEBTERMINAL_URL//https:\/\/} ${BIRDNETLOG_URL//https:\/\/}"/g /etc/hosts
 }
 
+install_var_run() {
+    cat <<EOF > /etc/tmpfiles.d/birdnet.conf
+d /run/birdnet 0755 1000 1000
+EOF
+}
 install_scripts() {
   ln -sf ${my_dir}/scripts/* /usr/local/bin/
 }
