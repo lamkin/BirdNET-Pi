@@ -18,7 +18,7 @@ SLEEP_DELAY=$((RECORDING_LENGTH / 4))
 
 # Continuously loop generating a spectrogram every 10 seconds
 while true; do
-  analyzing_now="$(cat $HOME/BirdNET-Pi/analyzing_now.txt)"
+  analyzing_now="$(cat /run/BirdNET-Pi/analyzing_now.txt)"
 
   if [ ! -z "${analyzing_now}" ] && [ -f "${analyzing_now}" ]; then
     spectrogram_png=${EXTRACTED}/spectrogram.png
@@ -27,3 +27,4 @@ while true; do
 
   sleep $SLEEP_DELAY
 done
+
