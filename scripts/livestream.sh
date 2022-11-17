@@ -12,6 +12,11 @@ if [ "$LOGGING_LEVEL" == "info" ] || [ "$LOGGING_LEVEL" == "debug" ];then
   set -x
 fi
 
+if [[ ! -d /run/user/${UID} ]]; then
+    sudo mkdir -p /run/user/${UID}
+    sudo chown ${UID} /run/user/${UID}
+fi
+
 if [ -z ${REC_CARD} ];then
   echo "Stream not supported"
 elif [[ ! -z ${RTSP_STREAM} ]];then
