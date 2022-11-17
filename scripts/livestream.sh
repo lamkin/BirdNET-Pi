@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Live Audio Stream Service Script
 source /etc/birdnet/birdnet.conf
+if [[ ! -d /run/user/${UID} ]]; then
+    sudo mkdir -p /run/user/${UID}
+    sudo chown ${UID} /run/user/${UID}
+fi
 
 # Read the logging level from the configuration option
 LOGGING_LEVEL="${LogLevel_LiveAudioStreamService}"

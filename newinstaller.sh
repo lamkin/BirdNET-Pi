@@ -21,12 +21,18 @@ USER=$USER
 export HOME=$HOME
 export USER=$USER
 
+sudo usermod -a -G audio $USER
+
 PACKAGES_MISSING=
 for cmd in git jq ; do
   if ! which $cmd &> /dev/null;then
       PACKAGES_MISSING="${PACKAGES_MISSING} $cmd"
   fi
 done
+if ! which netstat &> /dev/null;then
+    PACKAGES_MISSING="${PACKAGES_MISSING} net-tools"
+fi
+
 if [[ ! -z $PACKAGES_MISSING ]] ; then
   sudo apt update
   sudo apt -y install $PACKAGES_MISSING
