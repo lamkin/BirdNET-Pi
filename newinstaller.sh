@@ -22,6 +22,7 @@ export HOME=$HOME
 export USER=$USER
 
 sudo usermod -a -G audio $USER
+sudo usermod -a -G systemd-journal $USER
 
 PACKAGES_MISSING=
 for cmd in git jq ; do
