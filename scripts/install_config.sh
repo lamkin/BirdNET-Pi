@@ -124,7 +124,7 @@ FLICKR_FILTER_EMAIL=
 ## it needs to analyze. Be sure this directory is readable and writable for
 ## the BIRDNET_USER.
 
-RECS_DIR=$HOME/BirdSongs
+RECS_DIR=/run/birdnet/birdnet-queue
 
 ## REC_CARD is the sound card you would want the birdnet_recording.service to
 ## use. Leave this as "default" to use PulseAudio (recommended), or use
@@ -176,7 +176,7 @@ FREQSHIFT_PITCH=-1500
 ## CHANNELS holds the variable that corresponds to the number of channels the
 ## sound card supports.
 
-CHANNELS=2
+CHANNELS=1
 
 ## FULL_DISK can be set to configure how the system reacts to a full disk
 ## purge = Remove the oldest day's worth of recordings
