@@ -39,6 +39,7 @@ install_var_run() {
     cat <<EOF > /etc/tmpfiles.d/birdnet.conf
 d /run/birdnet 0755 1000 1000
 EOF
+    sudo systemd-tmpfiles --create
 }
 install_scripts() {
   ln -sf ${my_dir}/scripts/* /usr/local/bin/
@@ -437,6 +438,7 @@ install_services() {
   set_login
 
   install_depends
+  install_var_run
   install_scripts
   install_Caddyfile
   install_avahi_aliases
