@@ -435,7 +435,7 @@ EOF
 install_services() {
   set_hostname
   update_etc_hosts
-  set_login
+#  set_login
 
   install_depends
   install_var_run
