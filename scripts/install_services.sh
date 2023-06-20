@@ -43,6 +43,8 @@ EOF
 }
 install_scripts() {
   ln -sf ${my_dir}/scripts/* /usr/local/bin/
+  ln -sf /run/birdnet/thisrun.txt ${my_dir}/scripts/thisrun.txt
+  ln -sf /run/birdnet/lastrun.txt ${my_dir}/scripts/lastrun.txt
 }
 
 install_birdnet_analysis() {
